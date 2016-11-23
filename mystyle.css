@@ -1,0 +1,77 @@
+/* CSS Document */
+
+#wrap
+{
+ border:1px solid black;
+ width:900px;
+ height:800px;
+ margin:auto;
+}
+#header
+{
+ width:900px;
+ height:90px;
+ margin:auto;
+ background-color:#333333;
+
+
+
+}
+#header1
+{
+
+ width:300px;
+ height:88px;
+ float:left;
+border:1px solid black;
+
+
+}
+header2
+{
+ margin-left:5px;
+ width:600px;
+ height:88px;
+ float:left;
+
+}
+
+
+#location h6
+{
+ float:left;
+color:#FFFFFF;
+}
+#main
+
+{
+    float: left;
+    width:300px;
+    height:710px;
+   
+    
+}
+
+#main1
+{   
+    float:left;
+    width:595px;
+    height: 710px;
+    
+    border:1px solid black;
+    margin-left:1px ;
+}
+#sort
+{
+ width:250px;
+ height:100px;
+ background-color:#003399;
+}
+#picture
+{
+
+ width:550px;
+ height:200px;
+ border:1px solid black;
+ margin:3px 10px 10px 10px;
+}

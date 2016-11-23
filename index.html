@@ -1,0 +1,320 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>Untitled Document</title>
+<link rel="stylesheet" href="mystyle.css" />
+<script type="text/javascript">
+function myfunction(){
+
+var name = document.myform.name.value;
+var contact = document.myform.phnno.value;
+
+
+
+if(name == null || name == "")
+{
+ alert("Name cannot be null");
+ return false;
+}
+else if(!isNaN(name))
+{
+  alert("Please enter character only For Name:");
+  return false;
+
+}
+
+if(isNaN(contact))
+{
+alert("Please enter  numeric only for  phone  no.");
+return false;
+
+}
+
+if(document.myform.CountryCode.value == "Country Code")
+{
+
+ alert("Please selece  country code of  mobile  number");
+  return false;
+
+
+}
+
+if(contact.length <10 )
+{
+
+  alert("Phone No. upto  should  be  minimum  10 digits");
+return false;
+}
+else
+{
+   alert("Succesfully Submitted ");
+   return true;
+}
+ 
+ 
+ 
+
+}
+
+
+
+</script>
+<style type="text/css">
+	#tfheader{
+		background-color:#c3dfef;
+	}
+	#tfnewsearch{
+		float:right;
+		padding:20px;
+	}
+	.tftextinput{
+		margin: 0;
+		padding: 5px 15px;
+		font-family: Arial, Helvetica, sans-serif;
+		font-size:14px;
+		border:1px solid #0076a3; border-right:0px;
+		border-top-left-radius: 5px 5px;
+		border-bottom-left-radius: 5px 5px;
+	}
+	.tfbutton {
+		margin: 0;
+		padding: 5px 15px;
+		font-family: Arial, Helvetica, sans-serif;
+		font-size:14px;
+		outline: none;
+		cursor: pointer;
+		text-align: center;
+		text-decoration: none;
+		color: #ffffff;
+		border: solid 1px #0076a3; border-right:0px;
+		background: #0095cd;
+		background: -webkit-gradient(linear, left top, left bottom, from(#00adee), to(#0078a5));
+		background: -moz-linear-gradient(top,  #00adee,  #0078a5);
+		border-top-right-radius: 5px 5px;
+		border-bottom-right-radius: 5px 5px;
+	}
+	.tfbutton:hover {
+		text-decoration: none;
+		background: #007ead;
+		background: -webkit-gradient(linear, left top, left bottom, from(#0095cc), to(#00678e));
+		background: -moz-linear-gradient(top,  #0095cc,  #00678e);
+	}
+	/* Fixes submit button height problem in Firefox */
+	.tfbutton::-moz-focus-inner {
+	  border: 0;
+	}
+	.tfclear{
+		clear:both;
+	}
+</style>
+<style>
+      /* Always set the map height explicitly to define the size of the div
+       * element that contains the map. */
+      #map {
+        height:200px;
+		width:300px;
+      }
+      /* Optional: Makes the sample page fill the window. */
+      
+      .controls {
+        margin-top: 10px;
+        border: 1px solid transparent;
+        border-radius: 2px 0 0 2px;
+        box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        height: 32px;
+        outline: none;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+      }
+
+      #pac-input {
+        background-color: #fff;
+        font-family: Roboto;
+        font-size: 15px;
+        font-weight: 300;
+        margin-left: 12px;
+        padding: 0 11px 0 13px;
+        text-overflow: ellipsis;
+        width: 300px;
+      }
+
+      #pac-input:focus {
+        border-color: #4d90fe;
+      }
+
+      .pac-container {
+        font-family: Roboto;
+      }
+
+      #type-selector {
+        color: #fff;
+        background-color: #4d90fe;
+        padding: 5px 11px 0px 11px;
+      }
+
+      #type-selector label {
+        font-family: Roboto;
+        font-size: 13px;
+        font-weight: 300;
+      }
+      #target {
+        width: 345px;
+      }
+    </style>
+</head>
+<body>
+<div id="wrap">
+  <div id="header">
+    <div id="header1"> 
+	<img src="header.jpg" style="margin:10px 10px 10px 20px; width:200px; height:50px;" />
+	</div>
+    <div id="header2">
+	<form id="tfnewsearch" method="get" action="http://www.google.com">
+		        <input type="text" class="tftextinput" name="q" size="50"   placeholder="I AM  LOOKING FOR" maxlength="300"><input type="submit" value="search" class="tfbutton">
+		</form>
+	</div>
+  </div>
+  <div id="main">
+  <input id="pac-input" class="controls" type="text" placeholder="Search Location">
+  <div id="map"></div>
+    <script>
+      // This example adds a search box to a map, using the Google Place Autocomplete
+      // feature. People can enter geographical searches. The search box will return a
+      // pick list containing a mix of places and predicted search terms.
+
+      // This example requires the Places library. Include the libraries=places
+      // parameter when you first load the API. For example:
+      // <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places">
+
+      function initAutocomplete() {
+        var map = new google.maps.Map(document.getElementById('map'), {
+          center: {lat: -33.8688, lng: 151.2195},
+          zoom: 13,
+          mapTypeId: 'roadmap'
+        });
+
+        // Create the search box and link it to the UI element.
+        var input = document.getElementById('pac-input');
+        var searchBox = new google.maps.places.SearchBox(input);
+        map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
+
+        // Bias the SearchBox results towards current map's viewport.
+        map.addListener('bounds_changed', function() {
+          searchBox.setBounds(map.getBounds());
+        });
+
+        var markers = [];
+        // Listen for the event fired when the user selects a prediction and retrieve
+        // more details for that place.
+        searchBox.addListener('places_changed', function() {
+          var places = searchBox.getPlaces();
+
+          if (places.length == 0) {
+            return;
+          }
+
+          // Clear out the old markers.
+          markers.forEach(function(marker) {
+            marker.setMap(null);
+          });
+          markers = [];
+
+          // For each place, get the icon, name and location.
+          var bounds = new google.maps.LatLngBounds();
+          places.forEach(function(place) {
+            if (!place.geometry) {
+              console.log("Returned place contains no geometry");
+              return;
+            }
+            var icon = {
+              url: place.icon,
+              size: new google.maps.Size(71, 71),
+              origin: new google.maps.Point(0, 0),
+              anchor: new google.maps.Point(17, 34),
+              scaledSize: new google.maps.Size(25, 25)
+            };
+
+            // Create a marker for each place.
+            markers.push(new google.maps.Marker({
+              map: map,
+              icon: icon,
+              title: place.name,
+              position: place.geometry.location
+            }));
+
+            if (place.geometry.viewport) {
+              // Only geocodes have viewport.
+              bounds.union(place.geometry.viewport);
+            } else {
+              bounds.extend(place.geometry.location);
+            }
+          });
+          map.fitBounds(bounds);
+        });
+      }
+
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?&libraries=places&callback=initAutocomplete"
+         async defer></script><br />
+ 		<label style="margin-left:15px; color:#00bfff;">Location(Nearby)</label><br />
+		<label style="margin-left:15px;"><input type="checkbox"  value="ALL" checked="checked">ALL</label><br>
+		<label style="margin-left:15px;"><input type="checkbox"  value="ALL" checked="checked">BTM Layout(4)</label><br>
+        <label style="margin-left:15px;"><input type="checkbox"  value="ALL" checked="checked">HSR Layout(1)</label><br>
+		<label style="margin-left:15px;"><input type="checkbox"  value="ALL" checked="checked">JP Nagar(2)</label><br>
+        <label style="margin-left:15px;"><input type="checkbox"  value="ALL" checked="checked">Jaya Nagar(3)</label><br>
+		<label style="margin-left:15px;"><input type="checkbox"  value="ALL" checked="checked">Madiwala(4)</label><br>
+		<label style="margin-left:15px;"><input type="checkbox"  value="ALL" checked="checked">Silk Boared(3)</label><br>
+        <label style="margin-left:15px;"><input type="checkbox"  value="ALL" checked="checked">Koramangal(3)</label><br>
+		<label style="margin-left:15px;"><input type="checkbox"  value="ALL" checked="checked">Audugudi(2)</label><br>
+        <label style="margin-left:15px;"><input type="checkbox"  value="ALL" checked="checked">Banashankari(1)</label><br>
+	  <label style="margin-left:15px;"><input type="checkbox"  value="ALL" checked="checked">Tilak Nagar(1)</label><br>
+
+
+
+  </div>
+  <div id="main1">
+ &nbsp;&nbsp; <h6 style="float: left; color:#00bfff;margin-left:15px">Home&nbsp;/&nbsp;</h6>&nbsp; <h6 style="float: left; color: #00bfff;">Bangalore&nbsp;/&nbsp;</h6>&nbsp;<h6 style="float: left;">Find a Vet</h6> 
+ <br />
+ <br />
+ <table align="right">
+  <tr>
+  <td>Sort by</td><th style="border:1px solid black;"><select>
+  <option value="Consulting Charges">Consulting Charges</option>
+  <option value="saab">Consulting Charges</option>
+  <option value="mercedes">Consulting Charges</option>
+  <option value="audi">Consulting Charges</option>
+</select>
+</th>
+  </tr>
+  </table>
+  
+  &nbsp;&nbsp;<h6 style="margin-left:15px">5 matches found for Vet in BTM  Layout 25 Vets in Bangalore</h6>
+  <div id="picture">
+  
+  
+  <img src="doctor.jpg" style="width:540px; height:200px"/>
+  
+  </div>
+  <form method="post" name="myform" onsubmit="return myfunction()">
+  <label style="margin-left:15px;">Name * <p style="margin-left:15px; margin-top:-1px;"><input type="text" name="name"  style="width:300px;height:30px;" required/></p></label><br />
+  <label style="margin-left:15px;">Mobile  Number * <p style="margin-left:15px; margin-top:-1px;"><select
+  style="height:35px;"  id="CountryCode" required>
+  <option>Country Code </option>
+  <option>+91</option>
+  <option>+98</option>
+  <option>+36</option>
+  <option>+31</option>
+  <option>+64</option>
+  
+  </select><input type="text" name="phnno"  style="width:195px;height:30px;" required/></p></label><br />
+  <label style="margin-left:15px;">Email * <p style="margin-left:15px;margin-top:-1px;"><input type="email" name="email" style="width:300px;height:30px;" required/></p></label><br />
+  <label style="margin-left:15px;">URL <p style="margin-left:15px;margin-top:-1px;"><input type="url" name="url" style="width:300px;height:30px;" required/></p></label>
+  
+  <input type="submit" align="right" name="submit" value="SIGNUP" style="width:100px;height:40px;  background-color:#FFA500; color:#FFFFFF; margin-left:220px;" />
+  </form>
+  
+</div>
+
+</body>
+</html>
